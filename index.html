@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>netflix clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+<style>
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+  }
+</style>
+<body class="font-sans">
+   <header class="h-auto w-full bg-cover bg-center h-[650px] w-full rounded-b-3xl" style="background-image: url(https://i.redd.it/zjgs096khv591.jpg);">
+
+  <div class="flex justify-between items-center p-4 md:p-6">
+    <div>
+      <img src="data:image/png;base64,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" alt="Logo" class="h-[50px] w-[150px] md:h-[70px] md:w-[200px]">
+</div>
+    <div class="h-[40px] w-[100px] md:h-[50px] md:w-[120px] bg-red-500 text-white font-semibold rounded-md text-center pt-1 md:pt-[8px] text-lg md:text-2xl hover:bg-red-900 duration-1000">
+      SIGN IN
+    </div>
+  </div>
+  <div class="text-white text-center px-4 pb-10">
+    <h1 class="text-3xl md:text-6xl font-bold mt-10 md:mt-[100px] leading-tight">
+      Unlimited movies, TV shows,<br class="hidden md:block"> and more
+    </h1>
+    <h3 class="text-xl md:text-3xl font-bold mt-4">Starts at Rs 250. Cancel anytime.</h3>
+    <p class="text-lg md:text-2xl font-bold mt-2">
+      Ready to watch? Enter your email to create or restart your membership.
+    </p>
+    <div class="flex flex-col md:flex-row justify-center items-center mt-8 gap-4">
+      <input type="text" placeholder="Enter Your Email"
+        class="h-[50px] w-[90%] max-w-[400px] rounded-md bg-gray-900 text-white px-4 border border-white" />
+      <button
+        class="h-[50px] w-[170px] bg-red-500 text-white font-bold text-lg md:text-2xl rounded-md hover:bg-red-900 duration-1000">
+        Get Started >
+      </button>
+    </div>
+
+</header>
+   <main class="h-auto w-full bg-black py-10">
+
+  <h2 class="font-bold text-3xl md:text-5xl text-white text-center mb-10">Trending Now</h2>
+  <div class="flex flex-wrap justify-center gap-6 px-4">
+    <div class="relative h-[400px] w-[300px] bg-cover bg-center rounded-md overflow-hidden hover:scale-105 transition-transform duration-500"
+      style="background-image: url('https://image.tmdb.org/t/p/w500/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg');">
+      <div class="absolute bottom-4 right-4 text-white text-6xl font-bold drop-shadow-lg">1</div>
+    </div>
+    <div class="relative h-[400px] w-[300px] bg-cover bg-center rounded-md overflow-hidden hover:scale-105 transition-transform duration-500"
+      style="background-image: url('https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg');">
+      <div class="absolute bottom-4 right-4 text-white text-6xl font-bold drop-shadow-lg">2</div>
+    </div>
+    <div class="relative h-[400px] w-[300px] bg-cover bg-center rounded-md overflow-hidden hover:scale-105 transition-transform duration-500"
+      style="background-image: url('https://image.tmdb.org/t/p/w500/qWQSnedj0LCUjWNp9fLcMtfgadp.jpg');">
+      <div class="absolute bottom-4 right-4 text-white text-6xl font-bold drop-shadow-lg">3</div>
+    </div>
+    <div class="relative h-[400px] w-[300px] bg-cover bg-center rounded-md overflow-hidden hover:scale-105 transition-transform duration-500"
+      style="background-image: url('https://image.tmdb.org/t/p/w500/lyP4WNmUiiOgl4g2z7ywE0z6SGF.jpg');">
+      <div class="absolute bottom-4 right-4 text-white text-6xl font-bold drop-shadow-lg">4</div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-10">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">More Reasons to Join</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-[#1f1f1f] rounded-lg p-5 shadow-md hover:scale-105 transition-transform duration-300">
+        <h3 class="text-lg font-bold mb-2 text-white">Enjoy on your TV</h3>
+        <p class="text-sm text-gray-300 mb-4">
+          Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.
+        </p>
+        <img src="https://img.icons8.com/fluency/48/monitor.png" alt="TV Icon" class="w-10 h-10 mt-auto" />
+      </div>
+      <div class="bg-[#1f1f1f] rounded-lg p-5 shadow-md hover:scale-105 transition-transform duration-300">
+        <h3 class="text-lg font-bold mb-2 text-white">Download your shows to watch offline</h3>
+        <p class="text-sm text-gray-300 mb-4">
+          Save your favorites easily and always have something to watch.
+        </p>
+        <img src="https://img.icons8.com/fluency/48/download.png" alt="Download Icon" class="w-10 h-10 mt-auto" />
+      </div>
+      <div class="bg-[#1f1f1f] rounded-lg p-5 shadow-md hover:scale-105 transition-transform duration-300">
+        <h3 class="text-lg font-bold mb-2 text-white">Watch everywhere</h3>
+        <p class="text-sm text-gray-300 mb-4">
+          Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.
+        </p>
+       <i class="fa-solid fa-magnifying-glass w-10 h-10 mt-5 text-blue-600 text-4xl"></i>
+      </div>
+      <div class="bg-[#1f1f1f] rounded-lg p-5 shadow-md hover:scale-105 transition-transform duration-300">
+        <h3 class="text-lg font-bold mb-2 text-white">Create profiles for kids</h3>
+        <p class="text-sm text-gray-300 mb-4">
+          Send kids on adventures with their favorite characters in a space made just for them — free with your membership.
+        </p>
+   <i class="fa-solid fa-id-card text-blue-600 text-4xl mt-3"></i>
+      </div>
+    </div>
+  </div>
+
+<div class="max-w-7xl mx-auto px-4 py-10">
+  <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white text-center">Frequently Asked Questions</h2>
+
+  <!-- FAQ ITEM -->
+  <div class="bg-gray-900 hover:bg-gray-800 transition duration-300 rounded-md mb-4 px-4 py-5 flex justify-between items-center cursor-pointer">
+    <h1 class="text-lg md:text-2xl text-white">What is Netflix?</h1>
+    <i class="fa-solid fa-plus text-lg md:text-2xl text-white"></i>
+  </div>
+
+  <div class="bg-gray-900 hover:bg-gray-800 transition duration-300 rounded-md mb-4 px-4 py-5 flex justify-between items-center cursor-pointer">
+    <h1 class="text-lg md:text-2xl text-white">How Much Does Netflix Cost?</h1>
+    <i class="fa-solid fa-plus text-lg md:text-2xl text-white"></i>
+  </div>
+
+  <div class="bg-gray-900 hover:bg-gray-800 transition duration-300 rounded-md mb-4 px-4 py-5 flex justify-between items-center cursor-pointer">
+    <h1 class="text-lg md:text-2xl text-white">Where Can I Watch?</h1>
+    <i class="fa-solid fa-plus text-lg md:text-2xl text-white"></i>
+  </div>
+
+  <div class="bg-gray-900 hover:bg-gray-800 transition duration-300 rounded-md mb-4 px-4 py-5 flex justify-between items-center cursor-pointer">
+    <h1 class="text-lg md:text-2xl text-white">How Do I Cancel?</h1>
+    <i class="fa-solid fa-plus text-lg md:text-2xl text-white"></i>
+  </div>
+
+  <div class="bg-gray-900 hover:bg-gray-800 transition duration-300 rounded-md mb-4 px-4 py-5 flex justify-between items-center cursor-pointer">
+    <h1 class="text-lg md:text-2xl text-white">What Can I Watch?</h1>
+    <i class="fa-solid fa-plus text-lg md:text-2xl text-white"></i>
+  </div>
+
+  <div class="bg-gray-900 hover:bg-gray-800 transition duration-300 rounded-md mb-4 px-4 py-5 flex justify-between items-center cursor-pointer">
+    <h1 class="text-lg md:text-2xl text-white">Is Netflix Good for Kids?</h1>
+    <i class="fa-solid fa-plus text-lg md:text-2xl text-white"></i>
+  </div>
+</div>
+
+</main>
+
+<footer class="w-full bg-black px-6 py-10">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-center text-white text-base md:text-lg font-medium">
+      Ready to watch? Enter your email to create or restart your membership.
+    </p>
+
+    <div class="flex flex-col md:flex-row justify-center items-center mt-6 gap-4">
+      <input type="text" placeholder="Enter Your Email"
+        class="h-[50px] w-full max-w-[600px] rounded-md bg-gray-900 text-white px-4 border border-white" />
+      <button
+        class="h-[50px] w-[170px] bg-red-500 text-white font-bold text-lg md:text-xl rounded-md hover:bg-red-900 duration-300">
+        Get Started >
+      </button>
+    </div>
+    <h3 class="text-white font-bold text-xl md:text-2xl mt-12 text-center md:text-left underline">Questions? Contact us</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8 text-sm">
+      <ul class="text-white space-y-2">
+        <li><a href="#"><u>FAQ</u></a></li>
+        <li><a href="#"><u>Investor Relations</u></a></li>
+        <li><a href="#"><u>Privacy</u></a></li>
+        <li><a href="#"><u>Speed Test</u></a></li>
+      </ul>
+      <ul class="text-white space-y-2">
+        <li><a href="#"><u>Help Center</u></a></li>
+        <li><a href="#"><u>Jobs</u></a></li>
+        <li><a href="#"><u>Cookie Preferences</u></a></li>
+        <li><a href="#"><u>Legal Notices</u></a></li>
+      </ul>
+      <ul class="text-white space-y-2">
+        <li><a href="#"><u>Account</u></a></li>
+        <li><a href="#"><u>Ways to Watch</u></a></li>
+        <li><a href="#"><u>Corporate Information</u></a></li>
+        <li><a href="#"><u>Only on Netflix</u></a></li>
+      </ul>
+      <ul class="text-white space-y-2">
+        <li><a href="#"><u>Media Center</u></a></li>
+        <li><a href="#"><u>Terms of Use</u></a></li>
+        <li><a href="#"><u>Contact Us</u></a></li>
+      </ul>
+    </div>
+    <div class="mt-10">
+      <select name="language"
+        class="bg-black text-white h-[40px] w-[150px] border border-white rounded-md px-2">
+        <option>English</option>
+        <option>Urdu</option>
+        <option>Hindi</option>
+        <option>Japanese</option>
+        <option>Chinese</option>
+        <option>Arabic</option>
+      </select>
+    </div>
+    <p class="text-white mt-4 text-lg font-bold">Netflix Pakistan</p>
+    <p class="text-white mt-2 text-sm md:text-base max-w-[600px]">
+      This page is protected by Google reCAPTCHA to ensure you're not a bot.
+      <u>Learn more.</u>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
